@@ -16,6 +16,7 @@ public class S6_DestroyOndetect : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+        
     }
 
     private void OnCollisionEnter(Collision other){
@@ -23,7 +24,8 @@ public class S6_DestroyOndetect : MonoBehaviour
         if(obj.CompareTag("TypeEnemy")){
             Destroy(obj);
             contador++;
-            texto_corto.text= contador.ToString();
+            //Debug.Log("Contador: "+contador);
+            texto_corto.text= "Contador: "+contador.ToString();
         }
     }
     
