@@ -3,30 +3,27 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class S6_DestroyOndetect : MonoBehaviour
+public class DestruyeObjetoreportalo : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI texto_corto;
-    
-    int contador;
+    public int contador_enemigo;
+    [SerializeField] TextMeshProUGUI contadorenemigo;
     // Start is called before the first frame update
     void Start()
     {
-     contador =0;   
+     contador_enemigo=0;   
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update()
+    {
         
     }
-
     private void OnCollisionEnter(Collision other){
         GameObject obj = other.gameObject;
         if(obj.CompareTag("TypeEnemy")){
             Destroy(obj);
-            contador++;
-            Debug.Log("Contador: "+contador);
-           // texto_corto.text= "Contador: "+contador.ToString();
+            contador_enemigo++;
+            contadorenemigo.text="enemigos: "+contador_enemigo.ToString();
         }
     }
-    
 }
