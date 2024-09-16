@@ -13,16 +13,18 @@ public class s10_tiempo_juego : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        contador_segundos=5;   
+        contador_segundos = 10;
         StartCoroutine(corrutinatiempo());
     }
-    IEnumerator corrutinatiempo(){
-        while(contador_segundos>0){
-            Texto_tiempo.text=contador_segundos--.ToString();
-            yield return new WaitForSeconds(0.25f);
+    IEnumerator corrutinatiempo()
+    {
+        while (contador_segundos > 0)
+        {
+            Texto_tiempo.text = contador_segundos--.ToString();
+            yield return new WaitForSeconds(1f);
         }
         Debug.Log("el juego terminó xd");
         int score = acceso_score.contador_enemigo;
-        aux.cambiodeEscena(2,score); 
-    }   
+        aux.cambiodeEscena(2, score);
+    }
 }
