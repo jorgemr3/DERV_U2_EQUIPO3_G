@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DestruyeObjetoreportalo : MonoBehaviour
 {
-    public int contador_enemigo;
+    int contador_enemigo;
     [SerializeField] TextMeshProUGUI contadorenemigo;
     // Start is called before the first frame update
     void Start()
