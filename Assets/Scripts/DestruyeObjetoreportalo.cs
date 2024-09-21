@@ -23,7 +23,8 @@ public class DestruyeObjetoreportalo : MonoBehaviour
         if(obj.CompareTag("TypeEnemy")){
             Destroy(obj);
             contador_enemigo++;
-            contadorenemigo.text="enemigos: "+contador_enemigo.ToString();
+            Debug.Log("enemigos: "+contador_enemigo);
+           // contadorenemigo.text="enemigos: "+contador_enemigo.ToString();
         }
     }
 }
