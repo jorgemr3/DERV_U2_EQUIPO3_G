@@ -1097,7 +1097,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 764077917}
-  - component: {fileID: 764077916}
   m_Layer: 0
   m_Name: HandleGame
   m_TagString: Untagged
@@ -1105,21 +1104,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &764077916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764077915}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7612fe2c77807ec4c8fa9e7e1d71b868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceso_score: {fileID: 0}
-  aux: {fileID: 0}
-  Texto_tiempo: {fileID: 0}
 --- !u!4 &764077917
 Transform:
   m_ObjectHideFlags: 0
@@ -1619,7 +1603,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894221779}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7bc25ac353a2147b67a042788ce191, type: 3}
   m_Name: 
