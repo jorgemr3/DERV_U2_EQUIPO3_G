@@ -18,8 +18,8 @@ public class HandleTrampa : MonoBehaviour
     }
     void Start()
     {
-            tiempo_en_trigger = 4;
-            contador_enemigo_actual = 0;
+            tiempo_en_trigger = 1;
+            contador_enemigo_actual = 3; //en funcion del numero se mueve el enemigo 
     }
 
     // Update is called once per frame
@@ -27,15 +27,39 @@ public class HandleTrampa : MonoBehaviour
     {
 
     }
-    private void OnTriggerStay(Collider other){
+
+    private void OnTriggerEnter(Collider other){
+        if(other.CompareTag("Jugador")){
+            StartCoroutine(corrutina());
+        }
+    }
+    private void OnTriggerExit(Collider other){    
+         if(other.CompareTag("Jugador")){
+            StopCoroutine(corrutina());
+        }
+        }
+    
+    
+    /*private void OnTriggerStay(Collider other){
         tiempo_en_trigger += Time.deltaTime;
         if(tiempo_en_trigger > tiempo_para_nuevo_enemigo){
             lista_enemigos[contador_enemigo_actual].transform.position = spawn.position;
-             lista_enemigos[contador_enemigo_actual].GetComponent<Rigidbody>().AddForce( -1 * 4f* transform.up , ForceMode.Impulse);
+             lista_enemigos[contador_enemigo_actual].GetComponent<Rigidbody>().AddForce( -1 * 3f* transform.up , ForceMode.Impulse);
             contador_enemigo_actual++;
             contador_enemigo_actual%= contador_enemigo_actual;
             //genera enemigo
             tiempo_en_trigger=0;
         }
+    }*/
+
+    IEnumerator corrutina(){
+      tiempo_en_trigger += Time.deltaTime;
+            lista_enemigos[contador_enemigo_actual].transform.position = spawn.position;
+             lista_enemigos[contador_enemigo_actual].GetComponent<Rigidbody>().AddForce( -1 * 3f* transform.up , ForceMode.Impulse);
+            contador_enemigo_actual++;
+            contador_enemigo_actual%=contador_enemigo_actual; //checar luego
+            tiempo_en_trigger=0;
+
+        yield return new WaitForSeconds(tiempo_para_nuevo_enemigo);
     }
 }
