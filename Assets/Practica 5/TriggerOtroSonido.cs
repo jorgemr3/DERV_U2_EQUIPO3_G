@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TriggerOtroSonido : MonoBehaviour
 {
-    GameObject ola;
+    MaterialGlobalIlluminationFlags  ola;
     public AudioClip newTrack;
     private AudioSource audioSource;
 
@@ -28,6 +28,14 @@ public class TriggerOtroSonido : MonoBehaviour
         {
             audioSource.clip = newTrack;
             audioSource.Play();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Jugador"))
+        {
+            audioSource.Stop();
         }
     }
 }
