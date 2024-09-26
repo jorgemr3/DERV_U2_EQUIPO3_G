@@ -30,4 +30,12 @@ public class MusicTrigger : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Jugador"))
+        {
+            audioSource.Stop();
+        }
+    }
 }
