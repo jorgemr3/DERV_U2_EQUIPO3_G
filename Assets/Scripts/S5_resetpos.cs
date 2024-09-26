@@ -5,7 +5,7 @@ using UnityEngine;
 public class S5_resetpos : MonoBehaviour
 {
     [SerializeField] Transform posInicial;
-    Quaternion rotacioninicial = Quaternion.identity;
+   // Quaternion rotacioninicial = Quaternion.identity;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class S5_resetpos : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.R)){
             transform.position = posInicial.position;
-            transform.rotation = rotacioninicial;
+           // transform.rotation = rotacioninicial;
         }
 
     }

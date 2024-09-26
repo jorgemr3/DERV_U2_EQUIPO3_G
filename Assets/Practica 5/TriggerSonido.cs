@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class MusicTrigger : MonoBehaviour
 {
+    //GameObject ola;
     public AudioClip newTrack;
     private AudioSource audioSource;
 
     Transform spawn;
+
 
      void Awake()
     {
@@ -15,6 +17,7 @@ public class MusicTrigger : MonoBehaviour
     
     void Start()
     {
+        //ola.transform.localScale = new Vector3(1f, 1f, 1f);
         //newTrack = GetComponent<AudioClip>();
         audioSource = FindObjectOfType<AudioSource>();
     }
