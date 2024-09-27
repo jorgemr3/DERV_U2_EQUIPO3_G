@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HandleTrigger : MonoBehaviour
 {
-    int contador;
+    public int contador;
     Vector3 nuevaEscalaGrande;
     private Transform spawn;
 
@@ -18,7 +18,7 @@ public class HandleTrigger : MonoBehaviour
     }
     void Start()
     {
-        contador = 5;
+        //contador = 5;
         nuevaEscalaGrande = new Vector3(3f, 3f, 3f);
         escalaOriginal = new Vector3(1f, 1f, 1f);
 
@@ -34,14 +34,14 @@ public class HandleTrigger : MonoBehaviour
     {
         if (other.CompareTag("Jugador"))
         {
-            StartCoroutine(corrutinaGigante(other.gameObject));
+            StartCoroutine("corrutinaGigante(other.gameObject)");
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Jugador"))
         {
-            StopCoroutine(corrutinaGigante(other.gameObject));
+            StopCoroutine("corrutinaGigante(other.gameObject)");
         }
     }
 
@@ -52,14 +52,20 @@ public class HandleTrigger : MonoBehaviour
         jugador.transform.localScale = nuevaEscalaGrande;
         while (contador > 0 )
         {
+            jugador.GetComponent<Renderer>().material.color = Color.blue;
             contador--;
             Debug.Log("Contador para hacerse grande: " + contador);
             yield return new WaitForSeconds(1);
         }
+        jugador.GetComponent<Renderer>().material.color = Color.red;
         contador =  5;  
-        //devolver a escala original 
         jugador.transform.localScale = escalaOriginal;
     }
 
 
 }
+
+
+
+
+ 

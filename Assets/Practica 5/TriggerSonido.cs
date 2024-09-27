@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MusicTrigger : MonoBehaviour
 {
-    //GameObject ola;
     public AudioClip newTrack;
     private AudioSource audioSource;
 
@@ -17,9 +16,8 @@ public class MusicTrigger : MonoBehaviour
     
     void Start()
     {
-        //ola.transform.localScale = new Vector3(1f, 1f, 1f);
-        //newTrack = GetComponent<AudioClip>();
-        audioSource = FindObjectOfType<AudioSource>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,11 +29,5 @@ public class MusicTrigger : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Jugador"))
-        {
-            audioSource.Stop();
-        }
-    }
+    
 }

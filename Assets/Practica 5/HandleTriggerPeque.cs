@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class HandleTriggerPeque : MonoBehaviour
 {   
-    int conta;
+    [SerializeField] int conta;
     Vector3 escalaOriginal;
-    private Transform spawn;
+    Transform spawn;
     Vector3 nuevaEscalaPequeña;
 
     void Awake()
@@ -30,27 +30,27 @@ public class HandleTriggerPeque : MonoBehaviour
     {
         if (other.CompareTag("Jugador"))
         {
-            StartCoroutine(corrutinaChiquito(other.gameObject));
+            StartCoroutine("corrutinaChiquito(other.gameObject)");
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Jugador"))
         {
-            StopCoroutine(corrutinaChiquito(other.gameObject));
+            StopCoroutine("corrutinaChiquito(other.gameObject)");
         }
     }
 
     IEnumerator corrutinaChiquito(GameObject jugador){
         jugador.transform.localScale = nuevaEscalaPequeña;
          while(conta > 0){
+            jugador.GetComponent<Renderer>().material.color = Color.green;
             conta--;
             Debug.Log("Contador para hacerse grande: " + conta);
              yield return new WaitForSeconds(1); 
         }
+        jugador.GetComponent<Renderer>().material.color = Color.red;
         conta = 5;
-        // Espera 5 segundos
-        //devolver a escala original 
         jugador.transform.localScale = escalaOriginal;
     }
 }

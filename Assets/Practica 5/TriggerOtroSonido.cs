@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TriggerOtroSonido : MonoBehaviour
 {
-    MaterialGlobalIlluminationFlags  ola;
     public AudioClip newTrack;
     private AudioSource audioSource;
 
@@ -17,15 +16,14 @@ public class TriggerOtroSonido : MonoBehaviour
     
     void Start()
     {
-        //ola.transform.localScale = new Vector3(1f, 1f, 1f);
-        //newTrack = GetComponent<AudioClip>();
-        audioSource = FindObjectOfType<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Jugador") && newTrack != null)
         {
+            
             audioSource.clip = newTrack;
             audioSource.Play();
         }
