@@ -2,14 +2,16 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-
-public class TriggerQuitaVida : MonoBehaviour
+public class TriggerAumentarVida : MonoBehaviour
 {
-    Transform objQuitaVida;
+    Transform objAumentarVida;
     TextMeshProUGUI textoVida;
+
     Transform spawn;
+
     int vida;
-    bool quitarVida = false;
+
+    bool aumentarVida = false;
 
     void Start()
     {
@@ -18,36 +20,33 @@ public class TriggerQuitaVida : MonoBehaviour
 
     void Awake()
     {
-        objQuitaVida = GameObject.Find("QuitaVida").transform;
+        objAumentarVida = GameObject.Find("AumentarVida").transform;
         textoVida = GameObject.Find("TextVida").GetComponent<TextMeshProUGUI>();
         spawn = GameObject.Find("spawn").transform;
+
+
     }
+
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Jugador") && !quitarVida)
+        if (other.CompareTag("Jugador") && !aumentarVida)
         {
-            StartCoroutine(QuitarVida(other));
+            StartCoroutine(AumentarVida(other));
         }
     }
 
-    IEnumerator QuitarVida(Collider other)
+    IEnumerator AumentarVida(Collider other)
     {
-        quitarVida = true;
+        aumentarVida = true;
 
-        if (vida != 1)
+        if (vida != 5)
         {
-            vida--;
-            textoVida.text = vida.ToString();
-        }
-        else
-        {
-            other.transform.position = spawn.position;
-            vida = 5;
+            vida++;
             textoVida.text = vida.ToString();
         }
         yield return new WaitForSeconds(1f);
-        quitarVida = false;
+        aumentarVida = false;
     }
 
     void OnTriggerExit(Collider other)
@@ -55,7 +54,7 @@ public class TriggerQuitaVida : MonoBehaviour
         if (other.CompareTag("Jugador"))
         {
             StopAllCoroutines();
-            quitarVida = false;
+            aumentarVida = false;
         }
 
     }
@@ -64,5 +63,6 @@ public class TriggerQuitaVida : MonoBehaviour
     {
         vida = int.Parse(textoVida.text);
     }
+
 
 }

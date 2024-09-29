@@ -1,9 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
-public class TriggerQuitaVida : MonoBehaviour
+public class ColiisionQuitarVida : MonoBehaviour
 {
     Transform objQuitaVida;
     TextMeshProUGUI textoVida;
@@ -11,30 +11,18 @@ public class TriggerQuitaVida : MonoBehaviour
     int vida;
     bool quitarVida = false;
 
-    void Start()
-    {
-        vida = int.Parse(textoVida.text);
-    }
-
     void Awake()
     {
         objQuitaVida = GameObject.Find("QuitaVida").transform;
         textoVida = GameObject.Find("TextVida").GetComponent<TextMeshProUGUI>();
         spawn = GameObject.Find("spawn").transform;
+
+        vida = int.Parse(textoVida.text);
+
     }
 
-    void OnTriggerStay(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Jugador") && !quitarVida)
-        {
-            StartCoroutine(QuitarVida(other));
-        }
-    }
-
-    IEnumerator QuitarVida(Collider other)
-    {
-        quitarVida = true;
-
         if (vida != 1)
         {
             vida--;
@@ -46,18 +34,6 @@ public class TriggerQuitaVida : MonoBehaviour
             vida = 5;
             textoVida.text = vida.ToString();
         }
-        yield return new WaitForSeconds(1f);
-        quitarVida = false;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Jugador"))
-        {
-            StopAllCoroutines();
-            quitarVida = false;
-        }
-
     }
 
     void Update()
